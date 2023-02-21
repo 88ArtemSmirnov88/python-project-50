@@ -8,6 +8,7 @@ def main():
     )
     parser.add_argument("first_file")
     parser.add_argument("second_file")
+    parser.add_argument('-f', '--format')
     return parser.parse_args()
 
 
