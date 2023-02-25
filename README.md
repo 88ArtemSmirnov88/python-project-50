@@ -1,6 +1,7 @@
 
 [![Actions Status](https://github.com/88ArtemSmirnov88/python-project-50/workflows/hexlet-check/badge.svg)](https://github.com/88ArtemSmirnov88/python-project-50/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/690c101b622ca0a1fdd0/maintainability)](https://codeclimate.com/github/88ArtemSmirnov88/python-project-50/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/15935953afcdb706c4a2/maintainability)](https://codeclimate.com/github/88ArtemSmirnov88/python-project-50/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/15935953afcdb706c4a2/test_coverage)](https://codeclimate.com/github/88ArtemSmirnov88/python-project-50/test_coverage)
 
 # Gendiff - compare two json and/or yaml files
 ## About
