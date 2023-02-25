@@ -3,23 +3,23 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/690c101b622ca0a1fdd0/maintainability)](https://codeclimate.com/github/88ArtemSmirnov88/python-project-50/maintainability)
 
 # Gendiff - compare two json and/or yaml files
-### About
-___
+## About
+
 You can get a comparison of two json/yaml files - different formats can be compared too!
 
 The output type depends on the selected format:
 * stylish - is selected by default
 * plain
 * json
-### Install
-___
+## Install
+
 ```
 git clone https://github.com/88ArtemSmirnov88/python-project-50
 cd python-project-50
 make install
 ```
-### Help
-___
+## Help
+
 ```commandline
 gendiff -h
 
