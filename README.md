@@ -37,5 +37,4 @@ optional arguments:
                         set format of output
 ```
 ### comparison of flat files (JSON)
-___
 [![asciicast](https://asciinema.org/a/m7bQARwsbavWlqeQ6XENMaxzn.png)](https://asciinema.org/a/m7bQARwsbavWlqeQ6XENMaxzn)
