@@ -16,10 +16,6 @@ argparse = "^1.4.0"
 flake8 = "^6.0.0"
 pytest = "^7.2.1"
 
-[tool.poetry.dev-dependencies]
-flake8 = "^6.0.0"
-pytest = "^7.2.1"
-
 
 [build-system]
 requires = ["poetry-core"]
