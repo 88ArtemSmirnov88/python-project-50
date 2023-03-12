@@ -1,11 +1,10 @@
 poetry install:
-	/Users/artem/.local/bin/poetry install
-poetry version:
-	/Users/artem/.local/bin/poetry --version
+	poetry install
 poetry shell:
-	/Users/artem/.local/bin/poetry shell
+	poetry shell
 build:
 	poetry build
-
+test:
+	poetry run pytest
 lint:
 	poetry run flake8 gendiff
