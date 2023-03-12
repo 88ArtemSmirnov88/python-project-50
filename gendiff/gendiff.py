@@ -1,9 +1,13 @@
 import json
+import yaml
 
 
 def parse(file):
-    with open(file, 'r') as data:
-        return json.load(data)
+    with open(file) as data:
+        if file[-4::] == 'json':
+            return json.load(data)
+        else:
+            return yaml.safe_load(data)
 
 
 def generate_diff(first_file, second_file):
