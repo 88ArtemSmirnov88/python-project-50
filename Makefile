@@ -12,5 +12,9 @@ json:
 	poetry run gendiff tests/fixtures/file1.json tests/fixtures/file2.json
 yaml:
 	poetry run gendiff  tests/fixtures/file1.yaml tests/fixtures/file2.yaml
-coverage:
-	poetry run pytest --cov --cov-report xml
+json_long:
+	poetry run gendiff tests/fixtures/file3.json tests/fixtures/file4.json
+yaml_long:
+	poetry run gendiff  tests/fixtures/file3.yaml tests/fixtures/file4.yaml
+test-coverage:
+	poetry run pytest --cov=gendiff --cov-report xml
