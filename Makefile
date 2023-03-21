@@ -9,7 +9,7 @@ test:
 lint:
 	poetry run flake8 gendiff
 json:
-	poetry run gendiff tests/fixtures/file1.json tests/fixtures/file2.json
+	poetry run gendiff tests/fixtures/file.json tests/fixtures/file2.json
 yaml:
 	poetry run gendiff  tests/fixtures/file1.yaml tests/fixtures/file2.yaml
 json_long:
