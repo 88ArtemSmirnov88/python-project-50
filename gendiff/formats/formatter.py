@@ -1,9 +1,13 @@
-def unify_values(value):
-    if value is True:
-        return 'true'
-    elif value is False:
-        return 'false'
-    elif value is None:
-        return 'null'
-    else:
-        return value
+from gendiff.formats.json import get_json_format
+from gendiff.formats.plain import get_plain_format
+from gendiff.formats.stylish import get_stylish_format
+
+
+def get_format(tree, format):
+    if format == 'stylish':
+        return get_stylish_format(tree)
+    if format == 'plain':
+        return get_plain_format(tree)
+    if format == 'json':
+        return get_json_format(tree)
+    raise Exception(f'Unknown format: {format}')

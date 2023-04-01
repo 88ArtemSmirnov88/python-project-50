@@ -2,75 +2,22 @@ import pytest
 from gendiff import generate_diff
 
 
-@pytest.mark.parametrize('file1, file2, format, expected', [
-    ('tests/fixtures/file.json',
-     'tests/fixtures/file2.json',
-     'stylish',
-     'tests/fixtures/result_stylish.txt'),
-    ('tests/fixtures/file.yaml',
-     'tests/fixtures/file2.yaml',
-     'stylish',
-     'tests/fixtures/result_stylish.txt'),
-    ('tests/fixtures/file.json',
-     'tests/fixtures/file2.json',
-     'plain',
-     'tests/fixtures/result_plain.txt'),
-    ('tests/fixtures/file.yaml',
-     'tests/fixtures/file2.yaml',
-     'plain',
-     'tests/fixtures/result_plain.txt'),
-    ('tests/fixtures/file.json',
-     'tests/fixtures/file2.json',
-     'json',
-     'tests/fixtures/result_json.txt'),
-    ('tests/fixtures/file.yaml',
-     'tests/fixtures/file2.yaml',
-     'json',
-     'tests/fixtures/result_json.txt')
-])
-def test_gendiff(file1, file2, format, expected):
-    with open(expected, 'r') as f1:
-        result = f1.read()
-        assert generate_diff(file1, file2, format) == result
+def get_path(file_name):
+    return f'tests/fixtures/{file_name}'
 
 
-# def test_gendiff_stylish_json():
-#     test_json = generate_diff('tests/fixtures/file.json',
-#                               'tests/fixtures/file2.json')
-#     result = open('tests/fixtures/result_stylish.txt').read()
-#     assert test_json == result
-#
-#
-# def test_gendiff_stylish_yaml():
-#     test_yaml = generate_diff('tests/fixtures/file.yaml',
-#                               'tests/fixtures/file2.yaml')
-#     result = open('tests/fixtures/result_stylish.txt').read()
-#     assert test_yaml == result
-#
-#
-# def test_gendiff_plain_json():
-#     test_json = generate_diff('tests/fixtures/file.json',
-#                               'tests/fixtures/file2.json', format='plain')
-#     result = open('tests/fixtures/result_plain.txt').read()
-#     assert test_json == result
-#
-#
-# def test_gendiff_plain_yaml():
-#     test_yaml = generate_diff('tests/fixtures/file.yaml',
-#                               'tests/fixtures/file2.yaml', format='plain')
-#     result = open('tests/fixtures/result_plain.txt').read()
-#     assert test_yaml == result
-#
-#
-# def test_gendiff_json_json():
-#     test_json = generate_diff('tests/fixtures/file.json',
-#                               'tests/fixtures/file2.json', format='json')
-#     result = open('tests/fixtures/result_json.txt').read()
-#     assert test_json == result
-#
-#
-# def test_gendiff_json_json():
-#     test_json = generate_diff('tests/fixtures/file.yaml',
-#                               'tests/fixtures/file2.yaml', format='json')
-#     result = open('tests/fixtures/result_json.txt').read()
-#     assert test_json == result
+def read_file(file_path):
+    with open(file_path, 'r') as f:
+        result = f.read()
+    return result
+
+
+@pytest.mark.parametrize('format', ['json', 'yaml'])
+def test_gendiff(format):
+    file_path1 = get_path(f'file.{format}')
+    file_path2 = get_path(f'file2.{format}')
+
+    assert generate_diff(file_path1, file_path2, 'stylish') == read_file(get_path('result_stylish.txt'))
+    assert generate_diff(file_path1, file_path2, 'plain') == read_file(get_path('result_plain.txt'))
+    assert generate_diff(file_path1, file_path2, 'json') == read_file(get_path('result_json.txt'))
+

@@ -1,50 +1,55 @@
-from gendiff.formats.get_formats import get_format
-from gendiff.formats.formatter import unify_values
+from gendiff.formats.formatter import get_format
 from gendiff.parse import parse
 
 
-def generate_diff(first_file, second_file, format='stylish'):
-    with open(first_file, 'r') as f1, open(second_file, 'r') as f2:
-        file1 = f1.read()
-        file2 = f2.read()
-    result = builder_tree(parse(file1), parse(file2))
-    return get_format(format, result)
+def generate_diff(file_path1, file_path2, format):
+    data1, ext1 = get_data_file(file_path1)
+    data2, ext2 = get_data_file(file_path2)
+    tree = builder_tree(parse(data1, ext1), parse(data2, ext2))
+    return get_format(tree, format)
+
+
+def get_data_file(path_file):
+    ext = path_file.split('.')[1]
+    with open(path_file) as f:
+        data = f.read()
+        return data, ext
 
 
 def builder_tree(data1, data2):
     keys = sorted(list(data1.keys() | data2.keys()))
     result = []
     for key in keys:
-        value1 = unify_values(data1.get(key))
-        value2 = unify_values(data2.get(key))
+        value1 = data1.get(key)
+        value2 = data2.get(key)
         if key not in data1:
             children = {
-                'type': 'ADDED',
+                'type': 'added',
                 'key': key,
                 'value': value2
             }
         elif key not in data2:
             children = {
-                'type': 'DELETED',
+                'type': 'deleted',
                 'key': key,
                 'value': value1
             }
         elif data1[key] == data2[key]:
             children = {
-                'type': 'UNCHANGED',
+                'type': 'unchanged',
                 'key': key,
                 'value': value2
             }
         elif isinstance(data1[key], dict) and isinstance(
                 data2[key], dict):
             children = {
-                'type': 'NESTED',
+                'type': 'nested',
                 'key': key,
                 'value': builder_tree(value1, value2)
             }
         else:
             children = {
-                'type': 'CHANGED',
+                'type': 'changed',
                 'key': key,
                 'value': value1,
                 'value2': value2

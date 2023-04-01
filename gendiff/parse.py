@@ -2,9 +2,9 @@ import json
 import yaml
 
 
-def parse(file):
-    if file.startswith('{') or file.startswith('['):
-        result = json.loads(file)
-    else:
-        result = yaml.safe_load(file)
-    return result
+def parse(data, extension):
+    if extension == 'json':
+        return json.loads(data)
+    if extension == 'yaml':
+        return yaml.safe_load(data)
+    return Exception(f'Unknown format: {extension}')
