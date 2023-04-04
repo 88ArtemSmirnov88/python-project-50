@@ -20,4 +20,3 @@ def test_gendiff(format):
     assert generate_diff(file_path1, file_path2, 'stylish') == read_file(get_path('result_stylish.txt'))
     assert generate_diff(file_path1, file_path2, 'plain') == read_file(get_path('result_plain.txt'))
     assert generate_diff(file_path1, file_path2, 'json') == read_file(get_path('result_json.txt'))
-
