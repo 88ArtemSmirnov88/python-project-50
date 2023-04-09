@@ -12,7 +12,7 @@ def read_file(file_path):
     return result
 
 
-@pytest.mark.parametrize('format', ['json', 'yaml'])
+@pytest.mark.parametrize('format', ['json', 'yml'])
 def test_gendiff(format):
     file_path1 = get_path(f'file.{format}')
     file_path2 = get_path(f'file2.{format}')
